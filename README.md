@@ -2,7 +2,7 @@
 ## What is it?
 A parser of [Picasa Web Album](https://picasaweb.google.com).  
 This program reads a shared URL of a album, and generate a list of its contens and URLs as JSON.  
-This is aimed to use sequential contents. (e.g. Anime, Net radio etc.)
+This is aimed to use on sequential contents. (e.g. Anime, Net radio etc.)
 
 ## Installation
 1. `git clone https://github.com/uyorum/picasa-album-parser.git`
