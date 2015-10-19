@@ -40,17 +40,17 @@ def parse_album(album)
     end
 
     episode_date = []
-    %w(year month day hour min).each do |k|
+    %w(year month day hour min sec).each do |k|
       if Regexp.last_match.names.include?(k) && Regexp.last_match[k] != nil
         episode_date << Regexp.last_match[k].to_i
       else
-        break
+        episode_date << 0
       end
     end
 
     episode = {}
     episode["ep"] = content["ep"]
-    episode["date"] = DateTime.new(*episode_date).new_offset(9).to_s
+    episode["date"] = DateTime.new(*episode_date, DateTime.now.offset).to_s
     episode["picasa_link"] = e["link"].select{|l| l["rel"] == "alternate"}.first["href"]
     episode["thumbnail"] = e["media"]["thumbnail"].last["url"]
     episode["content_link"] = e["media"]["content"].select{|c| c["type"] =~ /video/}
