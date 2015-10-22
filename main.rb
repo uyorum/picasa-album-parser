@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'nokogiri'
 require 'open-uri'
 require 'json'
@@ -31,6 +32,7 @@ def parse_album(album)
   feed["entry"].each do |e|
     content = {}
     title_regexp =~ e["media"]["title"]
+    # ToDO: If filename doesn't match to the regexp, "title" sets by the filename
     %w(title ep).each do |k|
       if Regexp.last_match.names.include?(k)
         content[k] = Regexp.last_match[k]
@@ -58,6 +60,10 @@ def parse_album(album)
     contents_list[content["title"]] ||= []
     contents_list[content["title"]] << episode
   end
+  contents_list.each_value do |c|
+    c.sort_by!{|c| c["date"]}
+  end
+  # ToDO: Sort contents by most recent date (probably needs to change of structure of "contents_list")
   album_info["contents_list"] = contents_list
 
   File.write(album["output"], JSON.pretty_generate(album_info))
