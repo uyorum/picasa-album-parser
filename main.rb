@@ -52,7 +52,7 @@ def parse_album(album)
 
     episode = {}
     episode["ep"] = content["ep"]
-    episode["date"] = DateTime.new(*episode_date, DateTime.now.offset).to_s
+    episode["date"] = DateTime.new(*episode_date, album["time_offset"] || DateTime.now.offset).to_s
     episode["picasa_link"] = e["link"].select{|l| l["rel"] == "alternate"}.first["href"]
     episode["thumbnail"] = e["media"]["thumbnail"].last["url"]
     episode["content_link"] = e["media"]["content"].select{|c| c["type"] =~ /video/}
