@@ -4,9 +4,9 @@ album_list:
     # If the filename is like "20151018_2030_01_ExampleTitle.mp4", then
     title_regexp: ^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})_(?<hour>\d{2})(?<min>\d{2})_(?<ep>\d+)_(?<title>.*)\.mp4$
     time_offset: "+0900"
-    output: "example.json"
+    output: "out/example.json"
     # Multiple albums are supported
   - shared_url: "https://picasaweb.google.com/AAAAAAAAAAAAAAAA/BBBBBBBBB?authkey=CCCCCCCCCCCCCCCCCCCCCC"
     title_regexp: ^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})_(?<hour>\d{2})(?<min>\d{2})_(?<ep>\d+)_(?<title>.*)\.mp4$
     time_offset: "+0900"
-    output: "moreexample.json"
+    output: "out/moreexample.json"

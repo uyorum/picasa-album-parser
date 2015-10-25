@@ -19,6 +19,8 @@ This is aimed to use on sequential contents. (e.g. Anime, Net radio etc.)
     * title_regexp  
     Regular expression matches to the filename of the album.  
     This program use it and create a JSON.
+    * time_offset  
+    Set timezone of contents. This is used at "date" field of json.
     * output  
     The filename of the json.
 
