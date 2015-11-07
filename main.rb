@@ -69,6 +69,9 @@ def parse_album(album)
   File.write(album["output"], JSON.pretty_generate(album_info))
 end
 
+album_list = []
 GlobalConfig["album_list"].each do |album|
   parse_album(album)
+  album_list << { "content_type" => album["content_type"], "path" => album["output"].split("/").last }
 end
+File.write("out/album_list.json", JSON.pretty_generate(album_list))
